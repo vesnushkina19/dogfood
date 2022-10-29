@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import App from "./App";
+import "./style.css";
 
 ReactDOM.render(
-	<div className="wrapper">
-		<div className="card">=)</div>
-		<div className="card">0_o</div>
-		<div className="card">^_^</div>
-		<div className="card">=)</div>
-	</div>,
-	document.querySelector("#root")
-)
+    <App/>,
+    document.querySelector("#root")
+);

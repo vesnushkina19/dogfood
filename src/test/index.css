@@ -16,7 +16,20 @@ body {
 	box-shadow: 0 0 5px 0 #222;
 	border-radius: 8px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 50px;
+	font-size: 40px;
+	position: relative;
+}
+.card .like {
+	position: absolute;
+	font-size: 20px;
+	transform: rotateZ(-90deg);
+	top: 10px;
+	right: 4px;
+}
+.card h6 {
+	margin: 0;
+	font-size: 12px;
 }
