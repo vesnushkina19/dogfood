@@ -6,14 +6,14 @@ export default () => {
     return <footer>
         <Logo/>
         <span className="copy">&copy;{new Date().getFullYear()}DoogFood.ru</span>
-        <a href="">Lorem.</a>
-        <a href="">Reprehenderit.</a>
-        <a href="">Sit!</a>
-        <a href="">Et.</a>
-        <a href="">Aliquid!</a>
-        <a href="">Ex.</a>
-        <a href="">Deleniti.</a>
-        <a href="">Aliquam!</a>
+        <a href="">Каталог</a>
+        <a href="">Акции</a>
+        <a href="">Новости</a>
+        <a href="">Отзывы</a>
+        <a href="">Оплата и доставка</a>
+        <a href="">Часто спрашивают</a>
+        <a href="">Обратная связь</a>
+        <a href="">Контакты</a>
         <div className="contacts">
             <p>Мы на связи</p>
             <a href="tel:+79991234567">+7(999)123-45-67</a>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 //import Catalog from "./pages/Catalog";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Container, Row, Col } from "react-bootstrap";
-import Product from "./pages/product";
+import Main from "./MainPage/main";
 
 const App = () => {
     // const st = {
@@ -22,7 +22,7 @@ const App = () => {
     //             <Col xs={12} style={st}/>
     //         </Row>
     //     </Container>
-    return <Product/>
+    return <Main/>
 }
 
 export default App;

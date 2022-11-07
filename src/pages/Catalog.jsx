@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import Card from "../components/Card";
-import Header from "../components/Header/header";
-import Footer from "../components/Footer/footer";
-
+import React, { useState } from "react";
 import data from "../assets/data.json";
+import Card from "../components/Card";
+import Footer from "../components/Footer/footer";
+import Header from "../components/Header/header";
+
 
 export default () => {
     const [goods, setGoods] = useState(data);
