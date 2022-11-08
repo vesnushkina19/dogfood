@@ -1,0 +1,46 @@
+header {
+    background-color: var(--main-color);
+    padding-top: 20px;
+    height: 400px;
+}
+.search {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 40px;
+}
+h2 {
+    font-weight: 900;
+}
+.btn {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 45px;
+}
+
+@media (max-width: 1060px) {
+    header {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+input {
+    width: 400px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+}
+header .logo {
+    height: 40px;
+    display: flex;
+}
+.logo img {
+    height: 100%;
+}
