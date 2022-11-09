@@ -19,13 +19,13 @@ export default () => {
             <a href="tel:+79991234567">+7(999)123-45-67</a>
             <nav>
                 <a href="">
-                <i class="fa-brands fa-vk"></i>
+                <i className="fa-brands fa-vk"></i>
                 </a>
                 <a href="">
-                <i class="fa-brands fa-odnoklassniki"></i>
+                <i className="fa-brands fa-odnoklassniki"></i>
                 </a>
                 <a href="">
-                <i class="fa-brands fa-telegram"></i>
+                <i className="fa-brands fa-telegram"></i>
                 </a>
             </nav>
         </div>
