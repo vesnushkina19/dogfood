@@ -12,8 +12,8 @@ export default () => {
     };
     return <Col xs={12} md={12} style={box}>
     <Col xs={8} md={6}>
-        <h2 style={{color:"white", fontWeight:"900", padding:"20px 50px", fontSize:"44px"}}>Подаророк за первый заказ!</h2>
-        <p style={{color:"white", padding:"20px 50px", fontSize:"20px"}}>Лакомства из говядины</p>
+        <h2 style={{color:"white", fontWeight:"900", padding:"10px 50px", fontSize:"44px"}}>Подарок за первый заказ!</h2>
+        <p style={{color:"white", padding:"10px 50px", fontSize:"20px"}}>Лакомства из говядины</p>
     </Col>
     <Col xs={4} md={6}>
         <Figure style={{height:"250px", width: "250px", rotate:"30deg"}}>
