@@ -1,0 +1,9 @@
+.rotate {
+    width: 250px;
+    rotate: 20deg;
+    -webkit-transition: width 1.5s, height 1.5s, -webkit-transform 1.5s;
+    transition: width 1.5s, height 1.5s, transform 1.5s;
+}
+.rotate:hover {
+    width: 300px;
+}
