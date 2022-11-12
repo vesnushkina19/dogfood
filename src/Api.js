@@ -9,8 +9,6 @@ class Api {
                 "Authorization": `Bearer ${this.token}`
             }
         })
-        .then(res => res.json())
-        .then(data => data);
     }
     getProduct(id) {
         return fetch(`${this.path}/products/${id}`, {
@@ -18,8 +16,6 @@ class Api {
                 "Authorization": `Bearer ${this.token}`
             }
         })
-        .then(res => res.json())
-        .then(data => data);
     }
     addProduct(body) {
         return fetch(`${this.path}/products`, {
@@ -53,8 +49,18 @@ class Api {
             },
         })
     }
-    logIn() { // войти
-        return fetch(`${this.path}/products/singin`, {
+    logIn(body) { // войти
+        return fetch(`${this.path}/signin`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    signUp() { // зарегистрироваться
+        return fetch(`${this.path}/products/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -63,15 +69,12 @@ class Api {
         .then(res => res.json())
         .then(data => data);
     }
-    signUp() { // зарегистрироваться
-        return fetch(`${this.path}/products/singup`, {
-            method: "POST",
+    showProfile() {
+        return fetch(`${this.path}/v2/group-7/users/me`, {
             headers: {
-                "Content-Type": "application/json"
+                "Authorization": `Bearer ${this.token}`
             }
         })
-        .then(res => res.json())
-        .then(data => data);
     }
 }
 
