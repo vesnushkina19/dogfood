@@ -30,7 +30,7 @@ export default ({products, update, openPopup, user, setToken}) => {
         <Logo/>
         <input type="search" value={text} onChange={handler}/>
         <nav>
-            { user && <a href=""><FavIcon/></a>}
+            {user && <a href=""><FavIcon/></a>}
             {user && <a href=""><CartIcon/></a>}
             {user &&<a href=""><ProfileIcon/></a>}
             {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
