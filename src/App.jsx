@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
 
-import Product from "./pages/Product";
+import Product from "./pages/product";
 import Catalog from "./pages/Catalog";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
@@ -11,7 +11,6 @@ import Footer from "./components/Footer/footer";
 import Modal from "./components/Modal";
 import Api from "./Api.js";
 import Local from "./Local";
-
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Container, Row, Col, ButtonGroup, } from "react-bootstrap";
@@ -63,8 +62,8 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Main/>}/>
                 <Route path="/catalog" element={<Catalog goods={goods}/>}/>
-                <Route path="/product" element={<Product/>}/>
-                <Route path="/profile" element={<Profile user={{user}}/>}/>
+                <Route path="/product/:id" element={<Product api={api}/>}/>
+                <Route path="/profile" element={<Profile user={user}/>}/>
             </Routes>
             <Footer/>
         </div>
