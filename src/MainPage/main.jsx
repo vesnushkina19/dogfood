@@ -20,10 +20,10 @@ export default () => {
         <Container style={{paddingTop: "20px"}}>
             <Row>
                 <Banner/>
-                <Col xs={11} md={11} style={{paddingTop:"10px"}}>
+                <Col xs={8} md={10}>
                     <h2>Лакомства</h2>
                 </Col>
-                <Col xs={1} md={1} style={{paddingTop:"10px"}}>
+                <Col xs={4} md={2} style={{display: "grid"}}>
                     <ButtonGroup>
                         <Button variant="light"><ChevronLeft/></Button>
                         <Button variant="none"/>
@@ -73,7 +73,7 @@ export default () => {
                     </Col>
                 </Col>
                 <Col></Col>
-                <Col xs={12} md={6} style={{backgroundColor:  "#E0CC49", height: "250px",borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px"}}>
+                <Col xs={12} md={6} style={{backgroundColor:  "#E0CC49", height: "250px",borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", marginTop: "10px"}}>
                     <Col>
                         <h1 style={{color:"white", fontWeight:"900", padding:"10px 20px", fontSize:"34px"}}>Свиные уши</h1>
                         <p style={{color:"white", padding:"10px 20px", fontWeight:"700", fontSize:"15px"}}>100% натуральные</p>
