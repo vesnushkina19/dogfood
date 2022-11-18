@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Logo from "../Logo/logo";
-import "./header.css";
+import "./headerMain.css";
 import {BoxArrowInRight, BoxArrowLeft} from "react-bootstrap-icons";
 import {ReactComponent as FavIcon} from "./images/ic-favorites.svg";
 import {ReactComponent as CartIcon} from "./images/ic-cart.svg";

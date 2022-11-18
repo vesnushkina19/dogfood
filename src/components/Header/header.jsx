@@ -6,6 +6,10 @@ import {BoxArrowInRight, BoxArrowLeft} from "react-bootstrap-icons";
 import {ReactComponent as FavIcon} from "./images/ic-favorites.svg";
 import {ReactComponent as CartIcon} from "./images/ic-cart.svg";
 import {ReactComponent as ProfileIcon} from "./images/ic-profile.svg";
+import Main from "../../pages/Main"; 
+import { Container, Row, Col, Button, Figure } from "react-bootstrap";
+import { ChevronRight } from "react-bootstrap-icons";
+// import headerMain from "../../MainPage/Header/headerMain";
 
 
 export default ({products, update, openPopup, user, setToken, setUser}) => {
@@ -28,22 +32,38 @@ export default ({products, update, openPopup, user, setToken, setUser}) => {
         setToken("");
         setUser({});
     }
-
+    // const el = (
+    //     <>
+    //     <Container>
+    //         <Row>
+    //             <Col xs={12} md={4}>
+    //                 <h2>Крафтовые лакомства для собак</h2>
+    //                 <p>Всегда свежие лакомства ручной работы с доставкой по России и Миру</p>
+    //                 <Button className="btn" size="sm" variant="light">Каталог <ChevronRight/></Button>
+    //             </Col>
+    //         </Row>
+    //     </Container>
+    //     </>
+    // )
+    // function MainHeader() {
+    //         return el
+    // } 
     return <>
     <header>
-        <Logo/>
-        <input type="search" value={text} onChange={handler}/>
-        <nav>
-            {user && <a href=""><FavIcon/></a>}
-            {user && <Link to="/catalog"><CartIcon/></Link>}
-            {user &&<Link to="/profile"><ProfileIcon/></Link>}
-            {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
-            {!user && <a href="" onClick={e => {e.preventDefault(); openPopup(true)}} style={{fontSize: "1.6rem"}}><BoxArrowInRight/></a>}
-        </nav>
-    </header>
-    <div>
-        {text ? `По запросу ${text} найдено ${cnt} позиций` : "Поиск..."}
-    </div>
-    </>
-}
+    <Logo/>
+    <input type="search" value={text} onChange={handler} placeholder="Поиск"/>
+    <nav>
+        {user && <a href=""><FavIcon/></a>}
+        {user && <Link to="/catalog"><CartIcon/></Link>}
+        {user &&<Link to="/profile"><ProfileIcon/></Link>}
+        {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
+        {!user && <a href="" onClick={e => {e.preventDefault(); openPopup(true)}} style={{fontSize: "1.6rem"}}><BoxArrowInRight/></a>}
+    </nav>
+</header>
+<div>
+    {text ? `По запросу ${text} найдено ${cnt} позиций` : "Поиск..."}
+</div>
+</>
 
+
+}

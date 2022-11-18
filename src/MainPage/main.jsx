@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Container, Row, Col, ButtonGroup, Button, Figure } from "react-bootstrap";
-import Header from "./Header/header";
+import Header from "./Header/headerMain";
 import Footer from "../components/Footer/footer";
 import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
 import Banner from "./banner.jsx";

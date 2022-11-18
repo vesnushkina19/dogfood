@@ -4,9 +4,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 16px calc(50% - 500px);
+    gap: 80px;
 }
-@media (max-width: 1060px) {
+@media (max-width: 700px) {
     header {
+        flex-direction: column;
+        align-items: stretch;
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -17,12 +20,15 @@ nav {
     align-items: center;
 }
 input {
-    width: 400px;
+    display: flex;
+    align-items: center;
+    width: 100%;
     height: 30px;
     border-radius: 20px;
     border: none;
     outline: none;
     padding: 8px 12px;
+    flex: 1;
 }
 header .logo {
     height: 40px;
@@ -30,4 +36,15 @@ header .logo {
 }
 .logo img {
     height: 100%;
+}
+@media (max-width: 350px) {
+    header {
+        /* flex-direction: column; */
+        align-items: stretch;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    input {
+        max-width: 400px;
+    }
 }
