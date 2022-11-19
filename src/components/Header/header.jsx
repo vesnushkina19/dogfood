@@ -12,7 +12,7 @@ import { ChevronRight } from "react-bootstrap-icons";
 // import headerMain from "../../MainPage/Header/headerMain";
 
 
-export default ({products, update, openPopup, user, setToken, setUser}) => {
+export default ({products, update, openPopup, user, setToken, setUser, likes}) => {
     const [text, changeText] = useState("");
     const [cnt, setCnt] = useState(0);
     const handler = e => {
@@ -32,28 +32,13 @@ export default ({products, update, openPopup, user, setToken, setUser}) => {
         setToken("");
         setUser({});
     }
-    // const el = (
-    //     <>
-    //     <Container>
-    //         <Row>
-    //             <Col xs={12} md={4}>
-    //                 <h2>Крафтовые лакомства для собак</h2>
-    //                 <p>Всегда свежие лакомства ручной работы с доставкой по России и Миру</p>
-    //                 <Button className="btn" size="sm" variant="light">Каталог <ChevronRight/></Button>
-    //             </Col>
-    //         </Row>
-    //     </Container>
-    //     </>
-    // )
-    // function MainHeader() {
-    //         return el
-    // } 
+    
     return <>
     <header>
     <Logo/>
     <input type="search" value={text} onChange={handler} placeholder="Поиск"/>
     <nav>
-        {user && <a href=""><FavIcon/></a>}
+        {user && <a href=""><FavIcon/><span>{likes}</span></a>}
         {user && <Link to="/catalog"><CartIcon/></Link>}
         {user &&<Link to="/profile"><ProfileIcon/></Link>}
         {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
@@ -64,6 +49,4 @@ export default ({products, update, openPopup, user, setToken, setUser}) => {
     {text ? `По запросу ${text} найдено ${cnt} позиций` : "Поиск..."}
 </div>
 </>
-
-
 }

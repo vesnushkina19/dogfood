@@ -22,6 +22,7 @@ const App = () => {
     const [user, setUser] = useState(Local.getItem("user", true));
     const [popupActive, changePopupActive] = useState(false);
     const [api, setApi] = useState(new Api(token));
+    const [fav, setFav] = useState([]);
 
     useEffect(() => {
         console.log("user is changed");
@@ -40,13 +41,18 @@ const App = () => {
             api.showProfile()
                 .then(res => res.json())
                 .then(data => {
-                    console.log("User", data);
+                    // console.log("User", data);
                 })
         } else {
             setGoods([]);
             setData([]);
         }
     }, [api])
+
+    useEffect(() => {
+        const f = goods.filter(el => el.likes.includes(user._id))
+        setFav(f);
+    }, [goods])
 
     return <>
         <div className="wrapper">
@@ -56,12 +62,15 @@ const App = () => {
                 openPopup={changePopupActive} 
                 user={!!token} 
                 setToken={setToken} 
-                setUser={setUser}/>
+                setUser={setUser}
+                likes={fav.length}
+
+                />
             {/* <Catalog goods={goods}/> */}
             {/* <Product/> */}
             <Routes>
                 <Route path="/" element={<Main/>}/>
-                <Route path="/catalog" element={<Catalog goods={goods}/>}/>
+                <Route path="/catalog" element={<Catalog goods={goods} setFav={setFav} api={api}/>}/>
                 <Route path="/product/:id" element={<Product api={api}/>}/>
                 <Route path="/profile" element={<Profile user={user}/>}/>
             </Routes>
