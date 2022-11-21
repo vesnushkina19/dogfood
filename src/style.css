@@ -21,3 +21,27 @@ a {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
+.main__container {
+    background-color: var(--main-color);
+    height: 300px;
+    padding: 20px;
+}
+.main {
+    font-weight: 900;
+}
+.btn {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 45px;
+    margin: 20px;
+}
+.rotate {
+    width: 250px;
+    rotate: 20deg;
+    -webkit-transition: width 1.5s, height 1.5s, -webkit-transform 1.5s;
+    transition: width 1.5s, height 1.5s, transform 1.5s;
+}
+.rotate:hover {
+    width: 300px;
+}
+

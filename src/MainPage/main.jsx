@@ -61,7 +61,7 @@ export default () => {
             <h1 style={{fontSize: "18px"}}>{p2.name}</h1>
             <Button size="sm" variant="warning">В корзину</Button>
         </Col> */}
-        <Col xs={12} md={5} style={{backgroundColor:  "lightGreen", height: "250px",borderRadius: "20px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <Col xs={12} md={5}>
             <Col xs={6}>
                 <h1 style={{color:"white", fontWeight:"900", padding:"10px 20px", fontSize:"34px"}}>Рога северного оленя</h1>
                 <p style={{color:"white", padding:"10px 20px", fontWeight:"700", fontSize:"15px"}}>От 10 до 30 кг.</p>
@@ -73,7 +73,7 @@ export default () => {
             </Col>
         </Col>
         <Col></Col>
-        <Col xs={12} md={6} style={{backgroundColor:  "#E0CC49", height: "250px",borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", marginTop: "10px"}}>
+        <Col xs={12} md={6}>
             <Col>
                 <h1 style={{color:"white", fontWeight:"900", padding:"10px 20px", fontSize:"34px"}}>Свиные уши</h1>
                 <p style={{color:"white", padding:"10px 20px", fontWeight:"700", fontSize:"15px"}}>100% натуральные</p>
