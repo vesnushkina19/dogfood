@@ -6,10 +6,8 @@ import {BoxArrowInRight, BoxArrowLeft} from "react-bootstrap-icons";
 import {ReactComponent as FavIcon} from "./images/ic-favorites.svg";
 import {ReactComponent as CartIcon} from "./images/ic-cart.svg";
 import {ReactComponent as ProfileIcon} from "./images/ic-profile.svg";
-import Main from "../../pages/Main"; 
 import { Container, Row, Col, Button, Figure } from "react-bootstrap";
 import { ChevronRight } from "react-bootstrap-icons";
-// import headerMain from "../../MainPage/Header/headerMain";
 
 
 export default ({products, update, openPopup, user, setToken, setUser, likes}) => {
@@ -39,7 +37,7 @@ export default ({products, update, openPopup, user, setToken, setUser, likes}) =
     <input type="search" value={text} onChange={handler} placeholder="Поиск"/>
     <nav>
         {user && <a href=""><FavIcon/><span>{likes}</span></a>}
-        {user && <Link to="/catalog"><CartIcon/></Link>}
+        {user && <Link to=""><CartIcon/></Link>}
         {user &&<Link to="/profile"><ProfileIcon/></Link>}
         {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
         {!user && <a href="" onClick={e => {e.preventDefault(); openPopup(true)}} style={{fontSize: "1.6rem"}}><BoxArrowInRight/></a>}

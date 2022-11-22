@@ -64,7 +64,6 @@ const App = () => {
                 setToken={setToken} 
                 setUser={setUser}
                 likes={fav.length}
-
                 />
             {/* <Catalog goods={goods}/> */}
             {/* <Product/> */}

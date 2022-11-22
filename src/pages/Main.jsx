@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import Header from "../components/Header/header";
 import { Container, Row, Col, Button, Figure } from "react-bootstrap";
 import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
+import {Routes, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import data from "../assets/data.json";
 
@@ -20,7 +21,8 @@ export default () => {
         borderRadius: "20px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        // width: "calc(50% - 20px)"
     };
     const gold = {
         backgroundColor:  "#E0CC49",
@@ -29,7 +31,7 @@ export default () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        // marginLeft: "20px",
+        // marginLeft: "40px",
         // width: "calc(50% - 20px)"
     }
 
@@ -70,7 +72,7 @@ export default () => {
                     <Col xs={12} md={4}>
                         <h2 className="main">Крафтовые лакомства для собак</h2>
                         <p style={{fontSize: "16px"}}>Всегда свежие лакомства ручной работы с доставкой по России и Миру</p>
-                        <Button className="btn" size="sm" variant="light">Каталог <ChevronRight/></Button>
+                        <Link to="/catalog"><Button className="btn" size="sm" variant="light">Каталог <ChevronRight/></Button></Link>
                     </Col>
                 </Row>
             </Container>
@@ -109,11 +111,11 @@ export default () => {
                         <h1 style={st_h1}>Свиные уши</h1>
                         <p style={st_p}>100% натуральные</p>
                     </Col>
-                <Col>
-                    <Figure>
-                        <Figure.Image src="https://react-learning.ru/image-compressed/10.jpg" style={{height: "200px"}}/>
-                    </Figure> 
-                </Col>
+                    <Col>
+                        <Figure>
+                            <Figure.Image src="https://react-learning.ru/image-compressed/10.jpg" style={{height: "200px"}}/>
+                        </Figure> 
+                    </Col>
                 </Col>
                 <Banner/>
             </Row>
