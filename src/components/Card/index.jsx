@@ -39,7 +39,7 @@ useEffect(() => {
                 <div className="card_img" style={imgStyle}></div>
                 <div className="card_price">{price}₽</div>
                 <div className="card_text">{name}</div>
-                <button className="btn">В корзину</button>
+                <button className="btnCard">В корзину</button>
                 <span className="card_like" 
                 onClick={likeHandler}>
                     {like ? <HeartFill style={{color:"red"}}/> : <Heart style={{color:"red"}}/> }

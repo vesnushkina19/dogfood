@@ -6,7 +6,7 @@ import {Truck} from "react-bootstrap-icons";
 
 export default ({api}) => {
     // let [p, setP] = useState([]);
-    const [product, setProduct] = useState({});
+    const [p, setProduct] = useState({});
     const [cnt, setCnt] = useState(0);
     let params = useParams();
     console.log(params)
@@ -19,20 +19,20 @@ export default ({api}) => {
         })
     }, []);
     return <Container>
-        {product._id && 
+        {p._id && 
         <Row>
             <Col xs={12}>
-                <h1>{product.name}</h1>
+                <h1>{p.name}</h1>
             </Col>
             <Col xs={12} md={8}>
                 <Figure>
-                    <Figure.Image src={product.picture}/>
+                    <Figure.Image src={p.pictures}/>
                 </Figure>
             </Col>
             <Col xs={12} md={4}>
-                {product.discount && <small><del>{product.price} ₽</del></small>}
-                <div><strong className={product.discount ? "text-danger" : "text-dark"}>{Math.ceil(product.price * ((100 - product.discount) / 100))} ₽</strong></div>
-                <Col xs={12} md={4}>
+                {p.discount && <small><del>{p.price} ₽</del></small>}
+                <div><strong className={p.discount ? "text-danger" : "text-dark"}>{Math.ceil(p.price * ((100 - p.discount) / 100))} ₽</strong></div>
+                <Col xs={12} md={12}>
                 <Row>
                     <Col md={6}>
                     <ButtonGroup>
@@ -41,19 +41,20 @@ export default ({api}) => {
                         <Button size="sm" variant="light" onClick={e => setCnt(cnt + 1)}>+</Button>
                     </ButtonGroup>
                     </Col>
+                    {/* <Col md={1}></Col> */}
                     <Col md={6}>
-                    <Button size="sm" variant="warning">В корзину</Button>
+                    <Button size="sm" variant="warning" style={{width: "100px"}}>В корзину</Button>
                     </Col>
                 </Row>
                 <Alert variant="secondary" className="mt-3">
-                    <Row> <Truck/><small> Доставка по всему миру!</small>
+                    <Row><Truck/><small>Доставка по всему миру!</small>
                     </Row>
-                    </Alert>
+                </Alert>
             </Col>
             </Col>
             <Col xs={12}>
                 <h2>Описание</h2>
-                <p>{product.description}</p>
+                <p>{p.description}</p>
             </Col>
             <Col xs={12}>
                 <h2>Характеристики</h2>
@@ -61,15 +62,15 @@ export default ({api}) => {
                     <tbody>
                         <tr>
                             <th>Вес</th>
-                            <td>{product.weight}</td>
+                            <td>{p.weight}</td>
                         </tr>
                         <tr>
                             <th>Цена</th>
-                            <td>{product.price} ₽ за 100 грамм</td>
+                            <td>{p.price} ₽ за 100 грамм</td>
                         </tr>
                         <tr>
                             <th>Польза</th>
-                            <td>{product.description}</td>
+                            <td>{p.description}</td>
                         </tr>
                     </tbody>
                 </Table>
