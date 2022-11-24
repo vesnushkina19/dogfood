@@ -4,6 +4,7 @@ import {Heart, HeartFill} from "react-bootstrap-icons";
 import Local from "../../Local";
 import "./style.css";
 
+
 const Card = ({name, price, pictures, _id, likes, api, setFav}) => {
     const [like, setLike] = useState(false);
     const imgStyle = {
@@ -34,14 +35,17 @@ useEffect(() => {
     return (
         <Link to={`/product/${_id}`}>
             <div className="card">
-                <div className="card_img" style={imgStyle}></div>
-                <div className="card_price">{price}₽</div>
-                <div className="card_text">{name}</div>
-                <button className="btnCard">В корзину</button>
-                <span className="card_like" 
+            <span className="card__like" 
                 onClick={likeHandler}>
                     {like ? <HeartFill style={{color:"red"}}/> : <Heart style={{color:"red"}}/> }
                 </span>
+                <div className="card_img" style={imgStyle}></div>
+                <div className="card_price">{price}₽</div>
+                <div className="card_text">{name}</div>
+                <Link to="">
+                    <button className="btnCart">В корзину</button>
+                </Link>
+                
             </div>
         </Link>
     )

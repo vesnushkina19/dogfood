@@ -10,6 +10,7 @@ import { Container, Row, Col, Button, Figure } from "react-bootstrap";
 import { ChevronRight } from "react-bootstrap-icons";
 
 
+
 export default ({products, update, openPopup, user, setToken, setUser, likes}) => {
     const [text, changeText] = useState("");
     const [cnt, setCnt] = useState(0);
@@ -32,11 +33,14 @@ export default ({products, update, openPopup, user, setToken, setUser, likes}) =
     }
     
     return <>
-    <header>
+    <header className="sticky-md-top">
     <Logo/>
     <input type="search" value={text} onChange={handler} placeholder="Поиск"/>
     <nav>
-        {user && <a href="" className="favIcon"><FavIcon/><sup className="circle">{likes}</sup></a>}
+        {user && <Link to="" className="favIcon position-relative">
+            <FavIcon/>
+            <span className="badge rounded-pill bg-success position-absolute top-0 start-100 translate-middle">{likes}</span>
+        </Link>}
         {user && <Link to=""><CartIcon/></Link>}
         {user &&<Link to="/profile"><ProfileIcon/></Link>}
         {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
