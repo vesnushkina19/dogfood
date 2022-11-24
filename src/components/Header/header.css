@@ -37,6 +37,13 @@ header .logo {
 .logo img {
     height: 100%;
 }
+
+.circle {
+    background-color: rgb(95, 241, 95);
+    border-radius: 60%;
+    
+    
+}
 @media (max-width: 350px) {
     header {
         /* flex-direction: column; */

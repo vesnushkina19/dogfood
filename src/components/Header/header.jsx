@@ -36,7 +36,7 @@ export default ({products, update, openPopup, user, setToken, setUser, likes}) =
     <Logo/>
     <input type="search" value={text} onChange={handler} placeholder="Поиск"/>
     <nav>
-        {user && <a href=""><FavIcon/><span>{likes}</span></a>}
+        {user && <a href="" className="favIcon"><FavIcon/><sup className="circle">{likes}</sup></a>}
         {user && <Link to=""><CartIcon/></Link>}
         {user &&<Link to="/profile"><ProfileIcon/></Link>}
         {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}

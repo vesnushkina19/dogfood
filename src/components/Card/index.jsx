@@ -14,7 +14,6 @@ useEffect(() => {
     if (likes.includes(id)) {
         setLike(true)
     }
-    // console.log(likes)
 }, [])
 
     const likeHandler = e => {
@@ -29,7 +28,6 @@ useEffect(() => {
                 } else {
                     setFav(prev => prev.filter(el => el._id !== _id))
                     }
-                    console.log(data);
                 })
         }
                 
