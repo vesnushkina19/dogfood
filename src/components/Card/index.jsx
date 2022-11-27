@@ -5,7 +5,7 @@ import Local from "../../Local";
 import "./style.css";
 
 
-const Card = ({name, price, pictures, _id, likes, api, setFav}) => {
+const Card = ({name, price, discount, pictures, _id, likes, api, setFav}) => {
     const [like, setLike] = useState(false);
     const imgStyle = {
         backgroundImage: `url(${pictures})`
@@ -35,10 +35,14 @@ useEffect(() => {
     return (
         <Link to={`/product/${_id}`}>
             <div className="card">
-            <span className="card__like" 
+                <div className="header__card">
+                    {discount !==0 && <span className="card__discount">{`-${discount}%`}</span>}
+                    <span className="card__like" 
                 onClick={likeHandler}>
                     {like ? <HeartFill style={{color:"red"}}/> : <Heart style={{color:"red"}}/> }
                 </span>
+                </div>
+                
                 <div className="card_img" style={imgStyle}></div>
                 <div className="card_price">{price}₽</div>
                 <div className="card_text">{name}</div>

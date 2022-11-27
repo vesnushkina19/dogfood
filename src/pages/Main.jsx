@@ -22,6 +22,7 @@ export default () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        
         // width: "calc(50% - 20px)"
     };
     const gold = {
@@ -30,16 +31,14 @@ export default () => {
         borderRadius: "20px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        // marginLeft: "40px",
-        // width: "calc(50% - 20px)"
+        justifyContent: "center"
     }
 
     const st_h1 = {
         color:"white",
         fontWeight:"900",
         padding:"10px 20px",
-        fontSize:"32px"
+        fontSize:"30px",
     }
 
     const st_p = {
@@ -48,8 +47,15 @@ export default () => {
         fontSize:"20px"
     }
 
+    const st_pic = {
+        height: "150px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+    }
+
     function Banner() {
-        return <Col xs={12} md={12} style={box}>
+        return <Row xs={12} md={12} style={box} className="g-4">
                     <Col xs={8} md={6}>
                         <h1 size="md" style={st_h1}>Подарок за первый заказ!</h1>
                         <p style={st_p}>Лакомства из говядины</p>
@@ -60,7 +66,7 @@ export default () => {
                             </Figure.Image>
                         </Figure>
                     </Col>
-                </Col>
+                </Row>
                 
     }
 
@@ -78,45 +84,34 @@ export default () => {
             </Container>
         </div>
         <Container className="">
-            <Row  className="p-4 g-4">
+            <Row  className="gx-5 p-4 g-4">
                 <Banner/>
-                {/* <Col xs={12} style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                    <Col xs={10}>
-                        <h2>Лакомства</h2>
-                    </Col>
-                    <Col>
-                    
-                    </Col>
-                    <Col xs={1}>
-                        <Button variant="light"><ChevronLeft/></Button>
-                    </Col>
-                    <Col xs={1}>
-                        <Button variant="light"><ChevronRight/></Button>
-                    </Col>
-                </Col> */}
-                
-                <Col xs={12} md={6} style={green} className="">
-                    <Col xs={6} className="">
-                        <h1 size="md" style={st_h1}>Рога северного оленя</h1>
-                        <p style={st_p}>От 10 до 30 кг.</p>
-                    </Col>
-                    <Col xs={6}>
-                        <Figure>
-                            <Figure.Image size="md" src="https://react-learning.ru/image-compressed/16.jpg" style={{height: "200px"}}/>
-                        </Figure> 
-                    </Col>
-                </Col>
-                <Col xs={12} md={6} style={gold}>
-                    <Col>
-                        <h1 style={st_h1}>Свиные уши</h1>
-                        <p style={st_p}>100% натуральные</p>
-                    </Col>
-                    <Col>
-                        <Figure>
-                            <Figure.Image src="https://react-learning.ru/image-compressed/10.jpg" style={{height: "200px"}}/>
-                        </Figure> 
-                    </Col>
-                </Col>
+                        <Col xs={12} md={6}>
+                            <Row style={green}>
+                                <Col xs={6}>
+                                    <h1 size="md" style={st_h1}>Рога северного оленя</h1>
+                                    <p style={st_p}>От 10 до 30 кг.</p>
+                                </Col>
+                                <Col xs={6}>
+                                    <Figure>
+                                        <Figure.Image size="md" src="https://react-learning.ru/image-compressed/16.jpg"/>
+                                    </Figure>
+                                </Col>
+                            </Row>
+                        </Col>
+                        <Col xs={12} md={6}>
+                            <Row style={gold}>
+                                <Col>
+                                    <h1 style={st_h1}>Свиные уши</h1>
+                                    <p style={st_p}>100% натуральные</p>
+                                </Col>
+                                <Col>
+                                    <Figure>
+                                        <Figure.Image src="https://react-learning.ru/image-compressed/10.jpg" style={{height: "150px"}}/>
+                                    </Figure> 
+                                </Col>
+                            </Row>
+                        </Col>
                 <Banner/>
             </Row>
         </Container>

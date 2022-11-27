@@ -27,6 +27,17 @@
     align-self: flex-end;
 }
 .card__like {
-    display: grid;
+    display: block;
     justify-content: end;
+}
+.card__discount {
+    background-color: red;
+    color: #fff;
+    border-radius: 20px;
+    /* width: 20px; */
+    font-weight: 700;
+}
+.header__card {
+    display: flex;
+    justify-content: space-between;
 }
