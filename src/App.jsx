@@ -13,6 +13,9 @@ import Api from "./Api.js";
 import Local from "./Local";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import AddProduct from "./pages/AddProduct";
+
+const Context = React.createContext({});
 // import { Container, Row, Col, ButtonGroup, } from "react-bootstrap";
 
 const App = () => {
@@ -23,6 +26,8 @@ const App = () => {
     const [popupActive, changePopupActive] = useState(false);
     const [api, setApi] = useState(new Api(token));
     const [fav, setFav] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [searchText, search] = useState("");
 
     useEffect(() => {
         console.log("user is changed");
@@ -52,12 +57,22 @@ const App = () => {
     useEffect(() => {
         const f = goods.filter(el => el.likes.includes(user._id))
         setFav(f);
+        setProducts(goods);
     }, [goods])
 
-    return <>
+    return <Context.Provider value={{
+        goods: goods,
+        setGoods: setGoods,
+        products: products, //фильтрация поиска
+        searchText: searchText,
+        setProducts: setProducts,
+        search: search,
+        api: api,
+        setApi: setApi 
+    }}>
         <div className="wrapper">
             <Header
-                products={data}
+                
                 update={setGoods} 
                 openPopup={changePopupActive} 
                 user={!!token} 
@@ -69,8 +84,9 @@ const App = () => {
             {/* <Product/> */}
             <Routes>
                 <Route path="/" element={<Main/>}/>
-                <Route path="/catalog" element={<Catalog goods={goods} setFav={setFav} api={api}/>}/>
-                <Route path="/product/:id" element={<Product api={api}/>}/>
+                <Route path="/add" element={<AddProduct/>}/>
+                <Route path="/catalog" element={<Catalog  setFav={setFav}/>}/>
+                <Route path="/product/:id" element={<Product/>}/>
                 <Route path="/profile" element={<Profile user={user}/>}/>
             </Routes>
             <Footer/>
@@ -79,15 +95,11 @@ const App = () => {
             isActive={popupActive} 
             changeActive={changePopupActive} 
             setToken={setToken} 
-            api={api} 
             setUser={setUser}
         />}
-    </>
+    </Context.Provider>
 }
 
-export default App;
+export {App, Context};
 
 
-// export default () => {
-//     return <Main/>
-// }

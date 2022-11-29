@@ -18,17 +18,14 @@ class Api {
         })
     }
     addProduct(body) {
-        return fetch(`${this.path}/products`, {
+        return fetch(`${this.path}/products/`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${this.token}`,
-                "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(body)
         })
-        .then(res => res.json())
-        .then(data => data);
     }
     updProduct(id, body) {
         return fetch(`${this.path}/products/${id}`, {

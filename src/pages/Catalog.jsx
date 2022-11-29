@@ -1,17 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from "../components/Card";
-// import Api from "../Api"
+import {Context} from "../App";
 
-export default ({goods, api, setFav}) => {
+export default ({ setFav}) => {
+    const {searchText, goods, products} = useContext(Context);
     return <div className="cards-container">
-        {goods.length > 0 ?
+        {!searchText && goods.length > 0 &&
          goods.map((d, i) => <Card 
             key={i}
             {...d}
-            api={api}
             setFav={setFav}
-        />) : 
-        <p style={{gridColumnEnd: "span 4", textAlign: "center"}}>Для отображения данных необходимо войти в приложение</p>
-    }
+        />) 
+    } 
+    {searchText && <div style={{gridColumnEnd: "span 4"}}>
+        {products.length
+        ? <>По запросу <b>{searchText}</b> найдено {products.length} позиций</>
+        : <>По запросу <b>{searchText}</b> товаров не найдено</>
+        }
+    </div>}
+    {searchText && products.map((d, i) => <Card 
+            key={i}
+            {...d}
+            setFav={setFav}
+        />)}
     </div>
 }

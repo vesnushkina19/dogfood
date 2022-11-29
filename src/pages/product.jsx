@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import { Context } from "../App";
 import {useParams} from "react-router-dom";
 import data from "../assets/data.json";
 import { Container, Row, Col, Figure, Table, ButtonGroup, Button, Alert } from "react-bootstrap";
 import {Truck} from "react-bootstrap-icons";
 
-export default ({api}) => {
+export default () => {
     // let [p, setP] = useState([]);
+    const {api} = useContext(Context);
     const [p, setProduct] = useState({});
     const [cnt, setCnt] = useState(0);
     let params = useParams();

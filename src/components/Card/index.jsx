@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {Link} from "react-router-dom";
+import { Context } from "../../App";
 import {Heart, HeartFill} from "react-bootstrap-icons";
 import Local from "../../Local";
 import "./style.css";
 
 
-const Card = ({name, price, discount, pictures, _id, likes, api, setFav}) => {
+const Card = ({name, price, discount, pictures, _id, likes, setFav}) => {
+    const {api} = useContext(Context);
     const [like, setLike] = useState(false);
     const imgStyle = {
         backgroundImage: `url(${pictures})`
@@ -35,18 +37,18 @@ useEffect(() => {
     return (
         <Link to={`/product/${_id}`}>
             <div className="card">
-                <div className="header__card">
+                <span className="header__card">
                     {discount !==0 && <span className="card__discount">{`-${discount}%`}</span>}
                     <span className="card__like" 
                 onClick={likeHandler}>
                     {like ? <HeartFill style={{color:"red"}}/> : <Heart style={{color:"red"}}/> }
                 </span>
-                </div>
+                </span>
                 
-                <div className="card_img" style={imgStyle}></div>
-                <div className="card_price">{price}₽</div>
-                <div className="card_text">{name}</div>
-                <Link to="">
+                <span className="card_img" style={imgStyle}></span>
+                <span className="card_price">{price}₽</span>
+                <span className="card_text">{name}</span>
+                <Link to="/cart">
                     <button className="btnCart">В корзину</button>
                 </Link>
                 
