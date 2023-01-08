@@ -16,8 +16,9 @@ export default ({isActive, changeActive, setToken, setUser}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            Local.setItem("shopUser", data.token);
-            Local.setItem("user", data.data, true);
+            
+            data.token && Local.setItem("shopUser", data.token);
+            data.data && Local.setItem("user", data.data, true);
             setToken(data.token);
             setUser(data.data);
             setEmail("");

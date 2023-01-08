@@ -1,4 +1,8 @@
 class Api {
+
+    #onResponce = (res) => {
+        return res.ok ? res.json() : res.json().then((responce) => Promise.reject(responce))
+    }
     constructor(t) {
         this.path = "https://api.react-learning.ru";
         this.token = t;
