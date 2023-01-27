@@ -2,8 +2,8 @@
     border: 1px solid var(--main-color);
     border-radius: 8px;
     padding: 8px;
-    /* display: grid; */
-    /* gap: 10px; */
+    display: grid;
+    gap: 10px;
 }
 .card_img {
     height: 100px;
