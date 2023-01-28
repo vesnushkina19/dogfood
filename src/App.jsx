@@ -3,7 +3,7 @@ import {Routes, Route} from "react-router-dom";
 
 import Product from "./pages/product";
 import Catalog from "./pages/Catalog";
-import Main from "./pages/Main";
+import Main from "./pages/Main/Main";
 import Profile from "./pages/Profile";
 
 import Header from "./components/Header/header";
@@ -32,7 +32,6 @@ const App = () => {
     const [searchText, search] = useState("");
 
     useEffect(() => {
-        console.log("user is changed");
         setApi(new Api(token));
     }, [token])
 
@@ -72,7 +71,7 @@ const App = () => {
         api: api,
         setApi: setApi 
     }}>
-        <div className="wrapper">
+        
             <Header
                 
                 update={setGoods} 
@@ -82,17 +81,17 @@ const App = () => {
                 setUser={setUser}
                 likes={fav.length}
                 />
-            {/* <Catalog goods={goods}/> */}
-            {/* <Product/> */}
-            <Routes>
-                <Route path="/" element={<Main/>}/>
-                <Route path="/add" element={<AddProduct/>}/>
-                <Route path="/catalog" element={<Catalog  setFav={setFav}/>}/>
-                <Route path="/product/:id" element={<Product/>}/>
-                <Route path="/profile" element={<Profile user={user}/>}/>
-            </Routes>
+            <div className="wrapper main__content">
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/add" element={<AddProduct/>}/>
+                    <Route path="/catalog" element={<Catalog  setFav={setFav}/>}/>
+                    <Route path="/product/:id" element={<Product/>}/>
+                    <Route path="/profile" element={<Profile user={user}/>}/>
+                </Routes>
+            </div>
             <Footer/>
-        </div>
+        
         {!token && <Modal 
             isActive={popupActive} 
             changeActive={changePopupActive} 

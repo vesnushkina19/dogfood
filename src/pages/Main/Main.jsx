@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import { Container, Row, Col, Button, Figure } from "react-bootstrap";
-import { ChevronRight, ChevronLeft } from "react-bootstrap-icons";
-import {Routes, Route} from "react-router-dom";
+import { ChevronRight } from "react-bootstrap-icons";
 import {Link} from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import data from "../assets/data.json";
+import snackDeer from "./img/snackDeer.png";
+import snackPig from "./img/snackPig.png";
+
 
 export default () => {
     const box = {
@@ -23,7 +23,7 @@ export default () => {
         alignItems: "center",
         justifyContent: "center",
         
-        // width: "calc(50% - 20px)"
+        
     };
     const gold = {
         backgroundColor:  "#E0CC49",
@@ -47,15 +47,8 @@ export default () => {
         fontSize:"20px"
     }
 
-    const st_pic = {
-        height: "150px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-    }
-
     function Banner() {
-        return <Row xs={12} md={12} style={box} className="g-4">
+        return <Row xs={12} md={12} style={box}>
                     <Col xs={8} md={6}>
                         <h1 size="md" style={st_h1}>Подарок за первый заказ!</h1>
                         <p style={st_p}>Лакомства из говядины</p>
@@ -67,7 +60,7 @@ export default () => {
                         </Figure>
                     </Col>
                 </Row>
-                
+    
     }
 
 
@@ -83,37 +76,37 @@ export default () => {
                 </Row>
             </Container>
         </div>
-        <Container className="">
-            <Row  className="gx-5 p-4 g-4">
-                <Banner/>
-                        <Col xs={12} md={6}>
-                            <Row style={green}>
-                                <Col xs={6}>
-                                    <h1 size="md" style={st_h1}>Рога северного оленя</h1>
-                                    <p style={st_p}>От 10 до 30 кг.</p>
-                                </Col>
-                                <Col xs={6}>
-                                    <Figure>
-                                        <Figure.Image size="md" src="https://react-learning.ru/image-compressed/16.jpg"/>
-                                    </Figure>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={12} md={6}>
-                            <Row style={gold}>
-                                <Col>
-                                    <h1 style={st_h1}>Свиные уши</h1>
-                                    <p style={st_p}>100% натуральные</p>
-                                </Col>
-                                <Col>
-                                    <Figure>
-                                        <Figure.Image src="https://react-learning.ru/image-compressed/10.jpg" style={{height: "150px"}}/>
-                                    </Figure> 
-                                </Col>
-                            </Row>
-                        </Col>
-                <Banner/>
-            </Row>
+        <Container className="py-4">
+            <Banner/>
+                <Row className="py-4">
+                    <Col xs={12} md={6}>
+                        <Row style={green} className="mx-2">
+                            <Col xs={5}>
+                                <h1 size="md" style={st_h1}>Рога северного оленя</h1>
+                                <p style={st_p}>От 10 до 30 кг.</p>
+                            </Col>
+                            <Col xs={6}>
+                                <Figure>
+                                    <Figure.Image size="md" src={snackDeer} style={{maxWidth: "85%"}}/>
+                                </Figure>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Row style={gold} className="mx-2">
+                            <Col>
+                                <h1 style={st_h1}>Свиные уши</h1>
+                                <p style={st_p}>100% натуральные</p>
+                            </Col>
+                            <Col>
+                                <Figure>
+                                    <Figure.Image src={snackPig} style={{maxWidth: "80%"}}/>
+                                </Figure> 
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            <Banner/>
         </Container>
     </>
 }

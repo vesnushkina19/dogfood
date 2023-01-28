@@ -3,7 +3,7 @@ import Logo from "../Logo/logo";
 import "./footer.css";
 
 export default () => {
-    return <footer>
+    return <footer className="footer">
         <Logo/>
         <span className="copy">&copy;{new Date().getFullYear()}DoogFood.ru</span>
         <a href="">Каталог</a>

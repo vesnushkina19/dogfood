@@ -4,13 +4,12 @@ import { Context } from "../../App";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 import Local from "../../Local";
 import "./style.css";
+import { discountPrice } from "../../utils/utils";
 
-const Card = ({ name, price, discount, pictures, _id, likes, setFav }) => {
+const Card = ({ name, price, discount, wight, pictures, _id, likes, setFav }) => {
   const { api } = useContext(Context);
   const [like, setLike] = useState(false);
-  const imgStyle = {
-    backgroundImage: `url(${pictures})`,
-  };
+
   useEffect(() => {
     let id = Local.getItem("user", true)._id;
     if (likes.includes(id)) {
@@ -36,26 +35,35 @@ const Card = ({ name, price, discount, pictures, _id, likes, setFav }) => {
       });
   };
 
+  const discount_price = discountPrice(discount, price);
+
   return (
     <Link to={`/product/${_id}`}>
       <div className="card">
-        <span className="header__card">
+        
           {discount !== 0 && (
-            <span className="card__discount">{`-${discount}% `}</span>
+            <span className="card__sticky card__discount">{`-${discount}% `}</span>
           )}
-          <span className="card__like" onClick={likeHandler}>
+          <span className="card__sticky card__like" onClick={likeHandler}>
             {like ? (
               <HeartFill style={{ color: "red" }} />
             ) : (
               <Heart style={{ color: "red" }} />
             )}
           </span>
-        </span>
+     
 
-        <span className="card_img" style={imgStyle}></span>
-        <span className="card_price">{price}₽</span>
-
-        <span className="card_text">{name}</span>
+        <img className="card__img" src={pictures}/>
+        <div className="card__desc">
+            <span className={discount !== 0 ? "card__old-price" : "card__price" }>
+              {price}&nbsp;₽
+              </span>
+            {discount !==0 && <span className="card__price card__price_type_discount">
+              {discount_price}&nbsp;₽
+              </span>}
+            <span className="card__wight">{wight}</span>
+            <p className={name.length > 30 ? "card__name-small" :"card__name"}>{name}</p>
+          </div>
         <Link to="/cart">
           <button className="btnCart">В корзину</button>
         </Link>
