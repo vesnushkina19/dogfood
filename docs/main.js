@@ -2028,7 +2028,7 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Желудки утин
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/";
+/******/ 		__webpack_require__.p = "/DogFood";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
