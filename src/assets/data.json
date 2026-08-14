@@ -10,7 +10,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/1.jpg",
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCD2L6EYJTVcBJAm1cB2-Na9v2DmS8AXaCN7aVtyrhX9Tpbg5UKw96Hk4&s=10",
 		"tags": ["new"]
 	},
 	{
@@ -24,7 +24,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/2.jpg"
+		"pictures": "https://ir.ozone.ru/s3/multimedia-2/6242547914.jpg"
 	},
 	{
 		"id": 3,
@@ -37,7 +37,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/3.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfXGAUMvOyVCvoSwRy7kt2fnStxtzmlViCkkvn2hd3Uxy6xOZjIaZZ9o4&s=10"
 	},
 	{
 		"id": 4,
@@ -50,7 +50,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/4.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfbLa30KBc4uF-5FP0rKrh_dJo1BeuUOoPk7NxKhJ3WnIWX0QtwIXEG-a0&s=10"
 	},
 	{
 		"id": 5,
@@ -63,7 +63,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/5.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWY6FQ8U_8J5Rm-LzPnoyAt5EVawDB_qAkp_RruMNLvEyQcTuXl0XoFyxV&s=10"
 	},
 	{
 		"id": 6,
@@ -76,7 +76,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/6.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjcx31l-IzFZiPH1v7-XWBMiDWua5c4XwdDLvpG9XP3tFI5nS-yGY2_9w&s=10"
 	},
 	{
 		"id": 7,
@@ -89,7 +89,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/7.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9g1ENGO5OhCI3D5Entu6bG0a6no42QTfOVhSHvnumVIaxI0dFNBOX5LL&s=10"
 	},
 	{
 		"id": 8,
@@ -102,7 +102,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/8.jpg"
+		"pictures": "https://petpremier.ru/image/cache/catalog/Products/Goodies/Mutton/2023-03-17%2013-33-33-700x867.JPG"
 	},
 	{
 		"id": 9,
@@ -115,7 +115,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/9.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3s3UTdkANU4RXrk0QvFk1LyJMtuf5YlC4ANx4T6JgkCmuKna9liZgV8_A&s=10"
 	},
 	{
 		"id": 10,
@@ -128,7 +128,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/10.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuU6O9E7WsAD0qQBSZfuoGPf1X8V0wFHFI6r4umO_HQ54KuArw2chXhdDG&s=10"
 	},
 	{
 		"id": 11,
@@ -141,11 +141,11 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/11.jpg"
+		"pictures": "https://bisko-msk.ru/wp-content/uploads/2021/10/ushi-govyazhi-sushenye-1.jpg"
 	},
 	{
 		"id": 12,
-		"name": "Печенья с яблоком (печень говяжья, сердце)",
+		"name": "Печенье с яблоком (печень говяжья, сердце)",
 		"price": 340,
 		"discount": 0,
 		"wight": "14 шт",
@@ -154,7 +154,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/12.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW8o2RxvsBoUFh_wRF_78mGD54FB0X4MNsmQq9Dsx40m3ItmlOPuZeMQVt&s=10g"
 	},
 	{
 		"id": 13,
@@ -167,7 +167,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/13.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGPjKwJoN767Pqgol1DgglRMpEpaT5q_gwmcOUkrC-icgsBxnWH3dSVi-&s=10"
 	},
 	{
 		"id": 14,
@@ -180,7 +180,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/14.jpg"
+		"pictures": "https://ir.ozone.ru/s3/multimedia-k/c1000/6638269016.jpg"
 	},
 	{
 		"id": 15,
@@ -193,7 +193,7 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/15.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHTaeyPSapl-ao8v6QTQp8MQKE6ZNTckZ2iY_5Eu2Y7Q&s=10"
 	},
 	{
 		"id": 16,
@@ -206,6 +206,6 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"picture": "https://react-learning.ru/image-compressed/16.jpg"
+		"pictures": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPeaZ0uNjv6wFHFwl7nQ5fLvu2WrDG7KWv6D05EjLxV0WvQ7TRYbVWO_xe&s=10"
 	}
 ]
