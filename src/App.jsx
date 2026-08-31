@@ -16,6 +16,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Context = React.createContext({});
 
+const getInitialCart = () => {
+  const savedCart = Local.getItem("cart", true);
+  return Array.isArray(savedCart) ? savedCart : [];
+};
+
 const App = () => {
   const [data, setData] = useState([]);
   const [goods, setGoods] = useState([]);
@@ -26,7 +31,7 @@ const App = () => {
   const [fav, setFav] = useState([]);
   const [products, setProducts] = useState([]);
   const [searchText, search] = useState("");
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(getInitialCart);
 
   // Если токен поменялся — обновляем api-инстанс
   useEffect(() => {
@@ -48,7 +53,7 @@ const App = () => {
 
   // Профиль подгружаем только если есть токен
   useEffect(() => {
-    if (!token) return;
+    if (!token || String(token).startsWith("local-token-")) return;
 
     api
       .showProfile()
@@ -60,6 +65,10 @@ const App = () => {
         console.error("Ошибка загрузки профиля:", err);
       });
   }, [api, token]);
+
+  useEffect(() => {
+    Local.setItem("cart", cart, true);
+  }, [cart]);
 
   // Избранное (если есть user и likes)
   useEffect(() => {
@@ -74,6 +83,11 @@ const App = () => {
     );
     setFav(f);
   }, [goods, user]);
+
+  const cartCount = cart.reduce(
+    (total, item) => total + (Number(item.quantity) || 1),
+    0
+  );
 
   return (
     <Context.Provider
@@ -101,6 +115,7 @@ const App = () => {
         setToken={setToken}
         setUser={setUser}
         likes={fav.length}
+        cartCount={cartCount}
       />
 
       <div className="wrapper main__content">
@@ -109,7 +124,10 @@ const App = () => {
           <Route path="/add" element={<AddProduct />} />
           <Route path="/catalog" element={<Catalog setFav={setFav} />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/profile" element={<Profile user={user} />} />
+          <Route
+            path="/profile"
+            element={<Profile user={user} setToken={setToken} setUser={setUser} />}
+          />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>

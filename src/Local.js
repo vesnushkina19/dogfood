@@ -3,7 +3,11 @@ class Local {
         let data = localStorage.getItem(name);
         if (data) {
             if (flag) {
-                return JSON.parse(data)
+                try {
+                    return JSON.parse(data)
+                } catch {
+                    return "";
+                }
             } else {
                 return data;
             }

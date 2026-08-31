@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import Logo from "../Logo/logo";
 import { Context } from "../../App";
@@ -7,14 +7,12 @@ import {BoxArrowInRight, BoxArrowLeft} from "react-bootstrap-icons";
 import {ReactComponent as FavIcon} from "./images/ic-favorites.svg";
 import {ReactComponent as CartIcon} from "./images/ic-cart.svg";
 import {ReactComponent as ProfileIcon} from "./images/ic-profile.svg";
-import { Container, Row, Col, Button, Figure } from "react-bootstrap";
-import { ChevronRight, PlusCircle } from "react-bootstrap-icons";
+import { PlusCircle } from "react-bootstrap-icons";
 
-
-
-export default ({update, openPopup, user, setToken, setUser, likes}) => {
+export default ({update, openPopup, user, setToken, setUser, likes, cartCount = 0}) => {
     const {searchText, search, setProducts, goods} = useContext(Context);
-    const [cnt, setCnt] = useState(0);
+    const safeCartCount = Number(cartCount) || 0;
+
     const handler = e => {
         search(e.target.value);
         const result = goods.filter((el => el.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1));
@@ -33,15 +31,18 @@ export default ({update, openPopup, user, setToken, setUser, likes}) => {
     <Logo/>
     <input type="search" value={searchText} onChange={handler} placeholder="Поиск"/>
     <nav>
-        {user && <Link to="" className="favIcon position-relative">
+        {user && <Link to="" className="header__icon-link favIcon position-relative" aria-label={`Избранное: ${likes}`}>
             <FavIcon/>
             <span className="badge rounded-pill bg-success position-absolute top-0 start-100 translate-middle">{likes}</span>
         </Link>}
-        {user && <Link to="/cart"><CartIcon/></Link>}
-        {user && <Link to="/add"><PlusCircle/></Link>}
-        {user &&<Link to="/profile"><ProfileIcon/></Link>}
-        {user &&<a href="" onClick={logout} style={{fontSize: "1.6rem"}}><BoxArrowLeft/></a>}
-        {!user && <a href="" onClick={e => {e.preventDefault(); openPopup(true)}} style={{fontSize: "1.6rem"}}><BoxArrowInRight/></a>}
+        <Link to="/cart" className="header__icon-link position-relative" aria-label={`Корзина: ${safeCartCount}`}>
+            <CartIcon/>
+            <span className="badge rounded-pill bg-success position-absolute top-0 start-100 translate-middle">{safeCartCount}</span>
+        </Link>
+        {user && <Link to="/add" className="header__icon-link" aria-label="Добавить товар"><PlusCircle/></Link>}
+        {user &&<Link to="/profile" className="header__icon-link" aria-label="Профиль"><ProfileIcon/></Link>}
+        {user &&<a href="" onClick={logout} className="header__icon-link" aria-label="Выйти"><BoxArrowLeft/></a>}
+        {!user && <a href="" onClick={e => {e.preventDefault(); openPopup(true)}} className="header__icon-link" aria-label="Войти"><BoxArrowInRight/></a>}
     </nav>
 </header>
 </>

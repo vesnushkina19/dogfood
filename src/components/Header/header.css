@@ -19,6 +19,31 @@ nav {
     gap: 20px;
     align-items: center;
 }
+.header__icon-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    font-size: 1.6rem;
+    line-height: 1;
+    position: relative;
+}
+.header__icon-link svg {
+    width: 24px;
+    height: 24px;
+}
+.header__icon-link .badge {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    font-size: 11px;
+    line-height: 18px;
+}
 input {
     display: flex;
     align-items: center;

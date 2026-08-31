@@ -1,0 +1,253 @@
+.cart-page {
+  width: 95%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+.cart-page__title {
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.cart-empty {
+  padding: 28px;
+  border: 1px solid #e8ecef;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cart-empty p {
+  margin-bottom: 16px;
+  color: #7b8e98;
+}
+
+.cart-empty__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background: var(--main-color);
+  color: #1a1a1a;
+  font-weight: 800;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: start;
+}
+
+.cart-list {
+  display: grid;
+  gap: 16px;
+}
+
+.cart-card {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e8ecef;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cart-card__image-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 120px;
+}
+
+.cart-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cart-card__info {
+  min-width: 0;
+}
+
+.cart-card__name {
+  display: block;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.cart-card__wight {
+  display: block;
+  margin-bottom: 12px;
+  color: #7b8e98;
+  font-size: 14px;
+}
+
+.cart-card__prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.cart-card__old-price {
+  color: #7b8e98;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.cart-card__price {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.cart-card__price_discount {
+  color: #f44336;
+}
+
+.cart-card__controls {
+  display: grid;
+  grid-template-columns: 112px 96px 36px;
+  gap: 12px;
+  align-items: center;
+}
+
+.cart-card__quantity {
+  display: grid;
+  grid-template-columns: 32px 48px 32px;
+  align-items: center;
+  height: 32px;
+  border: 1px solid #d9dde2;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cart-card__qty-btn,
+.cart-card__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.cart-card__qty-btn {
+  width: 32px;
+  height: 32px;
+}
+
+.cart-card__qty-btn:disabled {
+  color: #b9c0c5;
+  cursor: default;
+}
+
+.cart-card__qty-value {
+  text-align: center;
+  font-weight: 800;
+}
+
+.cart-card__total {
+  min-width: 96px;
+  font-size: 18px;
+  text-align: right;
+}
+
+.cart-card__remove {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #f44336;
+}
+
+.cart-card__remove:hover {
+  background: #fff0ed;
+}
+
+.cart-summary {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #e8ecef;
+  border-radius: 8px;
+  background: #fff;
+  position: sticky;
+  top: 92px;
+}
+
+.cart-summary__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #7b8e98;
+}
+
+.cart-summary__row_total {
+  padding-top: 14px;
+  border-top: 1px solid #e8ecef;
+  color: #1a1a1a;
+  font-size: 18px;
+}
+
+@media (max-width: 860px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .cart-card__image-link {
+    width: 96px;
+    height: 96px;
+  }
+
+  .cart-card__controls {
+    grid-column: 1 / -1;
+    grid-template-columns: 112px 1fr 36px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cart-page {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .cart-card {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-card__image-link {
+    width: 100%;
+    height: 140px;
+  }
+
+  .cart-card__controls {
+    grid-template-columns: 112px 1fr 36px;
+  }
+}
