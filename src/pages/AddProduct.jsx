@@ -1,91 +1,177 @@
-import React, {useState, useContext} from "react";
-import {Container, Row, Col, Form, Button, Image} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Alert, Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { Context } from "../App";
+import { getLocalProducts, LOCAL_PRODUCTS_KEY } from "../utils/catalog";
+import Local from "../Local";
 
+const emptyForm = {
+  name: "",
+  pictures: "",
+  price: "",
+  discount: "0",
+  wight: "",
+  description: "",
+};
 
-export default () => {
-    const {api, setGoods} = useContext(Context);
+const AddProduct = () => {
+  const { api, setGoods, setData, setProducts, token } = useContext(Context);
+  const [form, setForm] = useState(emptyForm);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const [inp1, setInp1] = useState();
-    const [inp2, setInp2] = useState();
-    const [inp3, setInp3] = useState();
-    const [inp4, setInp4] = useState("0");
-    const [inp5, setInp5] = useState();
-    const [inp6, setInp6] = useState();
+  const isLocalToken = String(token || "").startsWith("local-token-");
 
-    const handler = e => {
-        e.preventDefault();
-        const body = {
-            pictures: inp2,
-            name: inp1,
-            price: +inp3,
-            discount: +inp4,
-            wight: inp5,
-            description: inp6
-        }
-        api.addProduct(body)
-            .then(res => res.json())
-            .then(data => {
-                //Товар успешно добавлен - модальное окно
+  const changeField = (field) => (e) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    setError("");
+    setSuccess("");
+  };
 
-                if (data) {
-                    setInput1("");
-                    setInput2("");
-                    setInput3("0");
-                    setInput4("0");
-                    setInput5("");
-                    setInput6("");
-                    setGoods(prev => [...prev, data])
-                }
-            })
+  const addToCatalog = (product) => {
+    const append = (prev) => [...(Array.isArray(prev) ? prev : []), product];
+    setGoods(append);
+    setData(append);
+    setProducts(append);
+  };
+
+  const addLocalProduct = (body) => {
+    const id = `local-${Date.now()}`;
+    const product = {
+      ...body,
+      _id: id,
+      id,
+      likes: [],
+      available: true,
+      stock: 10,
+    };
+    addToCatalog(product);
+    Local.setItem(LOCAL_PRODUCTS_KEY, [...getLocalProducts(), product], true);
+    return product;
+  };
+
+  const handler = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
+    const body = {
+      name: form.name.trim(),
+      pictures: form.pictures.trim(),
+      price: Number(form.price),
+      discount: Number(form.discount) || 0,
+      wight: form.wight.trim(),
+      description: form.description.trim(),
+    };
+
+    if (!body.name || !body.pictures || !body.wight || !body.description || !body.price) {
+      setError("Заполни название, картинку, цену, вес и описание.");
+      return;
     }
 
+    setIsSubmitting(true);
 
-    return <Container>
-        <Row className="py-5">
-            <Col xs={12}>
-            <h2>Добавить товар</h2>
-            </Col>
-            <Col xs={6}>
-                <Form onSubmit={handler}>
-                    <Form.Group>
-                        <Form.Label>Название товара</Form.Label>
-                        <Form.Control type="text" value={inp1} onChange={e => setInp1(e.target.value)}></Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Ссылка на изображение</Form.Label>
-                        <Form.Control type="link" value={inp2} onChange={e => setInp2(e.target.value)}></Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Цена товара</Form.Label>
-                        <Form.Control type="number" value={inp3} onChange={e => setInp3(e.target.value)}></Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Процент скидки</Form.Label>
-                        {/* <Form.Control type="number" value={inp4} onChange={e => setInp4(e.target.value)}></Form.Control> */}
-                        <Form.Select value={inp4} onChange={e => setInp4(e.target.value)}>
-                            <option value="0" selected>Без скидки</option>
-                            <option value="5" selected>5%</option>
-                            <option value="10" selected>10%</option>
-                            <option value="15" selected>15%</option>
-                            <option value="20" selected>20%</option>
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Вес</Form.Label>
-                        <Form.Control type="text" value={inp5} onChange={e => setInp5(e.target.value)}></Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Описание</Form.Label>
-                        <Form.Control as="textarea" value={inp6} onChange={e => setInp6(e.target.value)}></Form.Control>
-                    </Form.Group>
-                    <Button type="submit" className="btn-warning">Добавить</Button>
-                </Form>
-            </Col>
-            <Col xs={6}>
-                {inp2 && <Image src={inp2} className="w-100"/>}
-            </Col>
-        </Row>
-        
+    try {
+      if (!isLocalToken && api?.addProduct) {
+        const data = await api.addProduct(body);
+        if (data) {
+          addToCatalog(data);
+          setForm(emptyForm);
+          setSuccess("Товар добавлен.");
+          return;
+        }
+      }
+
+      addLocalProduct(body);
+      setForm(emptyForm);
+      setSuccess("Товар добавлен в локальный каталог.");
+    } catch (err) {
+      addLocalProduct(body);
+      setForm(emptyForm);
+      setSuccess("API недоступен, товар сохранён локально.");
+      console.error("Ошибка добавления товара:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <Container>
+      <Row className="py-5">
+        <Col xs={12}>
+          <h2>Добавить товар</h2>
+        </Col>
+        <Col xs={12} md={6}>
+          <Form onSubmit={handler}>
+            <Form.Group className="mb-3">
+              <Form.Label>Название товара</Form.Label>
+              <Form.Control
+                type="text"
+                value={form.name}
+                onChange={changeField("name")}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Ссылка на изображение</Form.Label>
+              <Form.Control
+                type="url"
+                value={form.pictures}
+                onChange={changeField("pictures")}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Цена товара</Form.Label>
+              <Form.Control
+                type="number"
+                min="1"
+                value={form.price}
+                onChange={changeField("price")}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Процент скидки</Form.Label>
+              <Form.Select value={form.discount} onChange={changeField("discount")}>
+                <option value="0">Без скидки</option>
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Вес</Form.Label>
+              <Form.Control
+                type="text"
+                value={form.wight}
+                onChange={changeField("wight")}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Описание</Form.Label>
+              <Form.Control
+                as="textarea"
+                value={form.description}
+                onChange={changeField("description")}
+                required
+              />
+            </Form.Group>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {success && <Alert variant="success">{success}</Alert>}
+            <Button type="submit" className="btn-warning" disabled={isSubmitting}>
+              {isSubmitting ? "Добавляем..." : "Добавить"}
+            </Button>
+          </Form>
+        </Col>
+        <Col xs={12} md={6}>
+          {form.pictures && <Image src={form.pictures} className="w-100" alt="Превью товара" />}
+        </Col>
+      </Row>
     </Container>
-}
+  );
+};
+
+export default AddProduct;

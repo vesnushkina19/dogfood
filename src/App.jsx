@@ -12,6 +12,13 @@ import Local from "./Local";
 import AddProduct from "./pages/AddProduct";
 import mockData from "./assets/data.json"; 
 import Cart from "./pages/Cart";
+import Favourite from "./pages/Favourite";
+import {
+  applyLikes,
+  getLocalProducts,
+  getProductList,
+  persistCatalogExtras,
+} from "./utils/catalog";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Context = React.createContext({});
@@ -40,11 +47,14 @@ const App = () => {
 
   // ВРЕМЕННО: загружаем товары из локального файла, чтобы каталог работал без интернета/API
   useEffect(() => {
-    const list = Array.isArray(mockData?.products)
-      ? mockData.products
-      : Array.isArray(mockData)
-      ? mockData
-      : [];
+    const mockList = getProductList(mockData);
+    const extra = getLocalProducts();
+    const extraIds = new Set(extra.map((item) => String(item._id || item.id)));
+    const merged = [
+      ...mockList.filter((item) => !extraIds.has(String(item._id || item.id))),
+      ...extra,
+    ];
+    const list = applyLikes(merged);
 
     setGoods(list);
     setData(list);
@@ -69,6 +79,11 @@ const App = () => {
   useEffect(() => {
     Local.setItem("cart", cart, true);
   }, [cart]);
+
+  useEffect(() => {
+    if (!Array.isArray(goods) || goods.length === 0) return;
+    persistCatalogExtras(goods);
+  }, [goods]);
 
   // Избранное (если есть user и likes)
   useEffect(() => {
@@ -106,6 +121,8 @@ const App = () => {
         setUser,
         cart,
         setCart,
+        fav,
+        setFav,
       }}
     >
       <Header
@@ -122,12 +139,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/add" element={<AddProduct />} />
-          <Route path="/catalog" element={<Catalog setFav={setFav} />} />
+          <Route path="/catalog" element={<Catalog />} />
           <Route path="/product/:id" element={<Product />} />
           <Route
             path="/profile"
             element={<Profile user={user} setToken={setToken} setUser={setUser} />}
           />
+          <Route path="/favourite" element={<Favourite />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>

@@ -31,7 +31,7 @@ export default ({update, openPopup, user, setToken, setUser, likes, cartCount = 
     <Logo/>
     <input type="search" value={searchText} onChange={handler} placeholder="Поиск"/>
     <nav>
-        {user && <Link to="" className="header__icon-link favIcon position-relative" aria-label={`Избранное: ${likes}`}>
+        {user && <Link to="/favourite" className="header__icon-link favIcon position-relative" aria-label={`Избранное: ${likes}`}>
             <FavIcon/>
             <span className="badge rounded-pill bg-success position-absolute top-0 start-100 translate-middle">{likes}</span>
         </Link>}

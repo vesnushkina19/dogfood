@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../App";
 import { Heart, HeartFill } from "react-bootstrap-icons";
-import Local from "../../Local";
 import "./style.css";
 import { discountPrice } from "../../utils/utils";
+import { getProductId, toggleProductLike } from "../../utils/catalog";
 
 const Card = ({
   id,
@@ -15,47 +15,46 @@ const Card = ({
   pictures,
   _id,
   likes = [],
-  setFav,
 }) => {
-  const { api, setCart } = useContext(Context);
+  const { api, setCart, user, setGoods, setData, setProducts, token } = useContext(Context);
 
   const productId = _id || id;
   const productPrice = Number(price) || 0;
   const productDiscount = Number(discount) || 0;
+  const userId = user?._id;
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    const user = Local.getItem("user", true);
-    const userId = user?._id;
     const isLiked = !!(userId && Array.isArray(likes) && likes.includes(userId));
     setLike(isLiked);
-  }, [productId, likes]);
+  }, [productId, likes, userId]);
+
+  const patchCatalog = (nextLike) => {
+    const updater = (prev) =>
+      (Array.isArray(prev) ? prev : []).map((item) => {
+        if (String(getProductId(item)) !== String(productId)) return item;
+        return { ...item, likes: toggleProductLike(item, userId, nextLike) };
+      });
+
+    setGoods(updater);
+    setData(updater);
+    setProducts(updater);
+  };
 
   const likeHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
+    if (!userId || !productId) return;
+
     const nextLike = !like;
     setLike(nextLike);
+    patchCatalog(nextLike);
 
-    // Если API недоступен — просто оставляем локально
-    if (!api?.setLike || !productId) return;
+    const isLocalToken = String(token || "").startsWith("local-token-");
+    if (isLocalToken || !api?.setLike) return;
 
-    api.setLike(productId, nextLike)
-      .then((data) => {
-        if (!setFav) return;
-        if (nextLike) {
-          setFav((prev) => {
-            const withoutDup = prev.filter((el) => el._id !== data._id);
-            return [...withoutDup, data];
-          });
-        } else {
-          setFav((prev) => prev.filter((el) => (el._id || el.id) !== productId));
-        }
-      })
-      .catch(() => {
-
-      });
+    api.setLike(productId, nextLike).catch(() => {});
   };
 
   const goToCart = (e) => {

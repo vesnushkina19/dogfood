@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Card from "../components/Card";
 import { Context } from "../App";
 
-const Catalog = ({ setFav }) => {
+const Catalog = () => {
   const { searchText, goods, products } = useContext(Context);
 
   const safeGoods = Array.isArray(goods) ? goods : [];
@@ -14,7 +14,7 @@ const Catalog = ({ setFav }) => {
       {!hasSearch &&
         safeGoods.length > 0 &&
         safeGoods.map((d) => (
-          <Card key={d._id || d.id} {...d} setFav={setFav} />
+          <Card key={d._id || d.id} {...d} />
         ))}
 
       {hasSearch && (
@@ -33,7 +33,7 @@ const Catalog = ({ setFav }) => {
 
       {hasSearch &&
         safeProducts.map((d) => (
-          <Card key={d._id || d.id} {...d} setFav={setFav} />
+          <Card key={d._id || d.id} {...d} />
         ))}
     </div>
   );
