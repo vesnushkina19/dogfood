@@ -117,6 +117,7 @@ const App = () => {
         search,
         api,
         setApi,
+        token,
         user,
         setUser,
         cart,

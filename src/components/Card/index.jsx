@@ -51,10 +51,12 @@ const Card = ({
     setLike(nextLike);
     patchCatalog(nextLike);
 
-    const isLocalToken = String(token || "").startsWith("local-token-");
-    if (isLocalToken || !api?.setLike) return;
+    const hasRemoteToken = Boolean(token) && !String(token).startsWith("local-token-");
+    if (!hasRemoteToken || !api?.setLike) return;
 
-    api.setLike(productId, nextLike).catch(() => {});
+    api.setLike(productId, nextLike).catch((err) => {
+      console.error("Ошибка синхронизации лайка с API:", err);
+    });
   };
 
   const goToCart = (e) => {
@@ -96,7 +98,8 @@ const Card = ({
           type="button"
           className="card__like"
           onClick={likeHandler}
-          aria-label="Добавить в избранное"
+          aria-label={like ? "Удалить из избранного" : "Добавить в избранное"}
+          aria-pressed={like}
         >
           {like ? <HeartFill color="red" size={22} /> : <Heart color="red" size={22} />}
         </button>
